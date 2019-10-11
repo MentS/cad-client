@@ -15,7 +15,13 @@
     </div>
     <!-- menu 菜单 -->
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li *ngFor="let items of menuDate" nz-submenu nzOpen nzTitle="{{ items.title }}">
+      <li
+        *ngFor="let items of menuDate"
+        nz-submenu
+        nzOpen
+        nzTitle="{{ items.title }}"
+        nzIcon="{{ items.icon }}"
+      >
         <ul>
           <li *ngFor="let item of items.children" nz-menu-item nzMatchRouter>
             <a routerLink="{{ item.link }}">{{ item.title }}</a>
@@ -33,9 +39,7 @@
       </div>
     </nz-header>
     <nz-content>
-      <div class="inner-content">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>
 </nz-layout>

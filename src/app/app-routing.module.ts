@@ -4,11 +4,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/layout' },
-  { path: 'layout', component: LayoutComponent },
   {
-    path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard/monitor', pathMatch: 'full' },
+
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+
+      {
+        path: 'basic',
+        loadChildren: () => import('./pages/basic/basic.module').then(m => m.BasicModule)
+      },
+
+      {
+        path: 'system',
+        loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule)
+      }
+    ]
   }
 ];
 

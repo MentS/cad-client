@@ -13,6 +13,9 @@ import zh from '@angular/common/locales/zh';
 
 import { LayoutComponent } from './layout/layout.component';
 
+import { BasicModule } from './pages/basic/basic.module';
+import { SystemModule } from './pages/system/system.module';
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -24,7 +27,9 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BasicModule,
+    SystemModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { menu } from './menu';
 
 @Component({
   selector: 'app-layout',
@@ -7,31 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   // isCollapsed = false;
-
-  menuDate = [
-    {
-      title: 'Dashboard',
-      icon: 'dashboard',
-      children: [
-        {
-          title: 'monitor',
-          icon: '',
-          link: '/monitor'
-        }
-      ]
-    },
-    {
-      title: '基本设置',
-      icon: '',
-      children: [
-        {
-          title: '客户',
-          icon: '',
-          link: 'layout/cust'
-        }
-      ]
-    }
-  ];
+  menuDate = menu;
 
   constructor() {}
 
