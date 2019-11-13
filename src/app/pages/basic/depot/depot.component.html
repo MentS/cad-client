@@ -1,0 +1,69 @@
+<nz-table
+  #editRowTable
+  nzBordered
+  [nzLoading]="isLoading"
+  [nzData]="listOfData"
+  [nzPageSize]="100"
+  [nzShowPagination]="false"
+>
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th [nzAlign]="center">名称</th>
+      <th [nzAlign]="">预设</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data">
+      <td>
+        <ng-container *ngIf="!editCache[data.d_no].edit; else nameInputTpl">
+          {{ data.d_no }}
+        </ng-container>
+        <ng-template #nameInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.d_no].data.d_no" />
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="!editCache[data.d_no].edit; else ageInputTpl">
+          {{ data.d_name }}
+        </ng-container>
+        <ng-template #ageInputTpl>
+          <input type="text" nz-input [(ngModel)]="editCache[data.d_no].data.d_name" />
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="!editCache[data.d_no].edit; else addressInputTpl">
+          {{ data.d_default ? '✅' : '' }}
+        </ng-container>
+        <ng-template #addressInputTpl>
+          <!-- <input type="text" nz-input [(ngModel)]="editCache[data.d_no].data.d_default" /> -->
+          <nz-switch
+            [(ngModel)]="editCache[data.d_no].data.d_default"
+            [nzCheckedChildren]="checkedTemplate"
+            [nzUnCheckedChildren]="unCheckedTemplate"
+          ></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+        </ng-template>
+      </td>
+      <td>
+        <div class="editable-row-operations">
+          <ng-container *ngIf="!editCache[data.d_no].edit; else saveTpl">
+            <a (click)="startEdit(data.d_no)">Edit</a><code> | </code>
+            <a (click)="delete(data.d_no)">Delete</a>
+          </ng-container>
+          <ng-template #saveTpl>
+            <a (click)="saveEdit(data.d_no)">Save</a><code> | </code>
+            <a nz-popconfirm nzTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(data.d_no)"
+              >Cancel</a
+            >
+          </ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<button style="margin-top: 24px;" (click)="addEdit()" nz-button nzType="dashed" nzBlock>
+  添加
+</button>

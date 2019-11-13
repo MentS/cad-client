@@ -9,20 +9,20 @@ export let menu = [
       }
     ]
   },
-  {
-    title: '资料设定',
-    icon: 'bars',
-    children: [
-      {
-        title: '部门名称',
-        link: '/basic/cust'
-      },
-      {
-        title: '员工单位',
-        link: '/basic/cust'
-      }
-    ]
-  },
+  // {
+  //   title: '资料设定',
+  //   icon: 'bars',
+  //   children: [
+  //     {
+  //       title: '部门名称',
+  //       link: '/basic/cust'
+  //     },
+  //     {
+  //       title: '员工单位',
+  //       link: '/basic/cust'
+  //     }
+  //   ]
+  // },
   {
     title: '基本设定',
     icon: 'profile',
@@ -30,6 +30,18 @@ export let menu = [
       {
         title: '客户信息',
         link: '/system/cust'
+      },
+      {
+        title: '厂商信息',
+        link: '/system/supply'
+      },
+      {
+        title: '产品管理',
+        link: '/system/product'
+      },
+      {
+        title: '资料设定',
+        link: '/basic/depot'
       }
     ]
   }

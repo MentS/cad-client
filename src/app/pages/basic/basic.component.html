@@ -1,0 +1,9 @@
+<nz-card nzTitle="资料设定">
+  <a *ngFor="let item of list" routerLink="/{{ item.link }}">
+    <div nz-card-grid [ngStyle]="gridStyle">{{ item.name }}</div>
+  </a>
+</nz-card>
+
+<nz-card style="margin-top: 24px;">
+  <router-outlet></router-outlet>
+</nz-card>

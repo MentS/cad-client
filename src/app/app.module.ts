@@ -11,8 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
+// # http interceptors
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DefaultInterceptor } from './http/default.interceptor';
+const INTERCEPTOR_PROVIDES = [
+  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }
+];
+
 import { LayoutComponent } from './layout/layout.component';
 
+import { SharedModule } from './shared/shared.module';
 import { BasicModule } from './pages/basic/basic.module';
 import { SystemModule } from './pages/system/system.module';
 
@@ -25,13 +33,13 @@ registerLocaleData(zh);
     AppRoutingModule,
     IconsProviderModule,
     NgZorroAntdModule,
-    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    SharedModule,
     BasicModule,
     SystemModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [...INTERCEPTOR_PROVIDES, { provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
