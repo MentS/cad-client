@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonitorComponent implements OnInit {
 
-  constructor() { }
+  list: any[] = [];
+  isLoading =  true;
 
-  ngOnInit() {
+  selectList() {
+    this.http.get<any>('api/orderd/test').subscribe(res => {
+      this.list = res.data;
+      this.isLoading = false;
+      console.log(res.data);
+    });
   }
 
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.selectList();
+  }
 }

@@ -1,4 +1,33 @@
 <nz-card>
+  <form nz-form>
+    <div nz-row nzGutter="16">
+      <div nz-col class="gutter-row" nzSpan="6">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzSpan]="5" nzRequired nzFor="note"
+            >Note</nz-form-label
+          >
+          <nz-form-control
+            [nzSpan]="12"
+            nzErrorTip="Please input your username!"
+          >
+            <input id="note" type="text" nz-input formControlName="note" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="6">
+        <div class="gutter-box">col-6</div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="6">
+        <div class="gutter-box">col-6</div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="6">
+        <div class="gutter-box">col-6</div>
+      </div>
+    </div>
+  </form>
+</nz-card>
+
+<nz-card>
   <nz-table #borderedTable nzBordered [nzData]="dataSet">
     <thead>
       <tr>

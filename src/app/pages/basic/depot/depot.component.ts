@@ -115,5 +115,5 @@ export class DepotComponent implements OnInit {
     this.selectList();
   }
 
-  constructor(private http: HttpClient, private message: NzMessageService) {}
+  constructor(private http: HttpClient, private message: NzMessageService) { }
 }

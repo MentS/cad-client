@@ -13,9 +13,9 @@ export class CustComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    // this.http.get<any>('api/cust').subscribe((res: any) => {
-    //   this.data = res.data.records;
-    //   console.log(res);
-    // });
+    this.http.get<any>('api/cust').subscribe((res: any) => {
+      this.data = res.data.records;
+      console.log(res);
+    });
   }
 }

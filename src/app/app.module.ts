@@ -23,11 +23,12 @@ import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from './shared/shared.module';
 import { BasicModule } from './pages/basic/basic.module';
 import { SystemModule } from './pages/system/system.module';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent],
+  declarations: [AppComponent, LayoutComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
